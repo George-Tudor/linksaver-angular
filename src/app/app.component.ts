@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
 
 @Injectable()
 @Component({
@@ -65,7 +63,16 @@ export class AppComponent {
     })
   }
 
-  deleteLink() {
-
+  deleteLink(link: any) {
+    const headers = {
+      Authorization: `Bearer ${window.localStorage['token']}`,
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    };
+    this.http.delete<any>('http://localhost:8080/links/' + link.id, { headers }).subscribe(data => {
+      console.log(data);
+      console.log("IT'S WORKING!!!!")
+      this.getLinks();
+    })
   }
 }
