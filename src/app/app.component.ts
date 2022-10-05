@@ -16,10 +16,9 @@ export class AppComponent {
   }
   newLink = {
     title: '',
-    url: '',
-    tag: ''
+    url: ''
   }
-  tag = '';
+  newTag = ''
   links: Array<any> = []
   tags: Array<any> = []
 
@@ -35,6 +34,7 @@ export class AppComponent {
     this.http.post<any>('http://localhost:8080/authenticate', this.credentials).subscribe(data => {
       console.log(data);
       window.localStorage['token'] = data.token
+      this.getLinks();
     })
   }
 
@@ -80,13 +80,13 @@ export class AppComponent {
     })
   }
 
-  addTag() {
+  addTag(link:any) {
     const headers = {
       Authorization: `Bearer ${window.localStorage['token']}`,
       Accept: 'application/json',
       'Content-Type': 'application/json'
     };
-    this.http.post<any>('http://localhost:8080/add-tag', this.tag, {headers}
+    this.http.post<any>(`http://localhost:8080/links/${link.id}/add-tag/`, this.newTag, {headers}
   ).
     subscribe(data => {
       console.log(data);
