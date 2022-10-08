@@ -8,7 +8,7 @@
         </div>
         <div>
             <label class="p-1" for="password">Password</label>
-            <input [(ngModel)]="credentials.password" id="password" type="text">
+            <input [(ngModel)]="credentials.password" id="password" type="password">
         </div>
         <div>
             <button (click)="register()">Register</button>
@@ -38,7 +38,11 @@
                 </div>
                 <div>
                     <label class="p-1" for="tag">Add Tag: </label>
-                    <input [(ngModel)]="newTag" id="tag" type="text">
+                    <input
+                            id="tag"
+                            type="text"
+                            class="form-control"
+                            (input)="onInputTagName($event)">
                     <button type="button" id="addTag" (click)="addTag(link)" class="btn-outline-info m-1">Add</button>
                 </div>
                 <div>
