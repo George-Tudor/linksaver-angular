@@ -80,6 +80,10 @@ export class AppComponent {
     })
   }
 
+  onInputTagName(event: Event) {
+    this.newTag = (<HTMLInputElement>event.target).value;
+  }
+
   addTag(link:any) {
     const headers = {
       Authorization: `Bearer ${window.localStorage['token']}`,
