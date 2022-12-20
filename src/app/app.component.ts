@@ -16,7 +16,8 @@ export class AppComponent {
   }
   newLink = {
     title: '',
-    url: ''
+    url: '',
+    tags: []
   }
   newTag = ''
   links: Array<any> = []
@@ -94,7 +95,18 @@ export class AppComponent {
   ).
     subscribe(data => {
       console.log(data);
-      // this.getLinks();
+      this.getLinks();
+    })
+  }
+
+  deleteTag(link:any, tag:any) {
+    const headers = {
+      Authorization: `Bearer ${window.localStorage['token']}`,
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    };
+    this.http.delete<any>(`http://localhost:8080/links/${link.id}/delete-tag/${tag.id}`, {headers}).subscribe(data => {
+      this.getLinks();
     })
   }
 }
