@@ -37,6 +37,13 @@
                     <a [href]="link.url" target="_blank">Click to Open</a>
                 </div>
                 <div>
+                    <h2>Tags:</h2>
+                    <span class="badge bg-info me-2" *ngFor="let tag of link.tags">
+                        <span class="me-1">{{tag.description}}</span>
+                        <span type="button" (click)="deleteTag(link, tag)">&times;</span>
+                    </span>
+                </div>
+                <div>
                     <label class="p-1" for="tag">Add Tag: </label>
                     <input
                             id="tag"
