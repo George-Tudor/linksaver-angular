@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Link } from './link';
 
 @Injectable()
 @Component({
@@ -14,9 +15,11 @@ export class AppComponent {
     username: '',
     password: ''
   }
-  newLink = {
+  newLink: Link = {
     title: '',
+    description: '',
     url: '',
+    imageUrl: '',
     tags: []
   }
   newTag = ''
