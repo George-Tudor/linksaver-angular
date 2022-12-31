@@ -5,15 +5,21 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LinksComponent } from './links/links.component';
+import { EntryComponent } from './entry/entry.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LinksComponent,
+    EntryComponent
   ],
   imports: [
     BrowserModule,
       HttpClientModule,
-      FormsModule
+      FormsModule,
+      AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
