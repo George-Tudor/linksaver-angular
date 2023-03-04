@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { catchError } from "rxjs";
+import { throwError } from "rxjs";
 
 @Component({
   selector: 'app-entry',
@@ -14,18 +17,26 @@ export class EntryComponent implements OnInit {
   }
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   ngOnInit(): void {
   }
 
   login() {
-    console.log('It works')
-    this.http.post<any>('http://localhost:8080/authenticate', this.credentials).subscribe(data => {
-      console.log(data);
-      window.localStorage['token'] = data.token
-    })
+    this.http.post<any>('http://localhost:8080/authenticate', this.credentials).pipe(
+        catchError(err => {
+          console.error(err);
+          this.router.navigate(['error']);
+          return throwError(err);
+        })
+    ).subscribe(data => {
+      if (data && data.token) {
+        console.log(data);
+        window.localStorage['token'] = data.token;
+        this.router.navigate(['links']);
+      }
+    });
   }
 
   register() {
