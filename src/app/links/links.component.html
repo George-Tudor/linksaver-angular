@@ -40,4 +40,33 @@
             <button type="button" class="btn-outline-danger" (click)="deleteLink(link)">Delete</button>
         </div>
     </div>
+    <input type="file" id="fileUpload" onchange="uploadFile()">
+    <script>
+        function uploadFile() {
+            // Get the selected file
+            var file = document.getElementById("fileUpload").files[0];
+
+            // Create a new FileReader
+            var reader = new FileReader();
+
+            // Read the selected file as text
+            reader.readAsText(file);
+
+            // Handle the load event for the FileReader
+            reader.onload = function() {
+                // Get the contents of the file as text
+                var fileContent = reader.result;
+
+                // Parse the HTML from the file
+                var parser = new DOMParser();
+                var htmlDoc = parser.parseFromString(fileContent, "text/html");
+
+                // Get the body of the HTML document
+                var body = htmlDoc.body;
+
+                // Do something with the HTML
+                console.log(body);
+            }
+        }
+    </script>
 </div>
