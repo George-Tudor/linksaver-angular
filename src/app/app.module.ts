@@ -10,6 +10,7 @@ import { LinksComponent } from './links/links.component';
 import { EntryComponent } from './entry/entry.component';
 import { ErrorComponent } from './error/error.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { GreetingComponent } from './greeting/greeting.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     LinksComponent,
     EntryComponent,
     ErrorComponent,
-    NavbarComponent
+    NavbarComponent,
+    GreetingComponent
   ],
   imports: [
     BrowserModule,
