@@ -10,7 +10,7 @@ import { throwError } from "rxjs";
   styleUrls: ['./entry.component.css']
 })
 export class EntryComponent implements OnInit {
-  title = 'Linksaver Angular';
+  title = 'Welcome to Linksaver';
   credentials = {
     username: '',
     password: ''
