@@ -9,13 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { LinksComponent } from './links/links.component';
 import { EntryComponent } from './entry/entry.component';
 import { ErrorComponent } from './error/error.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LinksComponent,
     EntryComponent,
-    ErrorComponent
+    ErrorComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
